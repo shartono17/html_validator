@@ -10,6 +10,32 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
+    tag_list = html._extract_tags()
+    s = []
+    symbol = ''
+    balanced = True
+    for i in range(len(tag_list)):
+        currtag = tag_list[i]
+        if currtag[1] != "/":
+            symbol = "<"
+            s.append(symbol)
+        elif currtag[1] == "/":
+            symbol = "</"
+            top = s.pop()
+            if not matches(top, symbol):
+                balanced = False        
+
+    if balanced and s==[]:
+        return True
+    else: return False
+
+    
+
+def _matches(left, right):
+    openbrack = "<"
+    closebrack = "</"
+    return openbrack.index(left) == closebrack.index(right)
+
 
     # HINT:
     # use the _extract_tags function below to generate a list of html tags without any extra text;
@@ -27,5 +53,7 @@ def _extract_tags(html):
     stripping out all text not contained within angle brackets.
 
     >>> _extract_tags('Python <strong>rocks</strong>!')
-    ['<strong>', '</strong>']
+    ['<strong>',
     '''
+
+
