@@ -21,7 +21,7 @@ def validate_html(html):
             s.append(currtag)
         elif currtag[1] == "/":
             symbol = "</"
-            top = s.pop()[0]
+            top = s.pop()
             topsym = top[0]
             if not ( matches(topsym, symbol) and top[1:]==currtag[2:] ):
                 balanced = False        
