@@ -23,8 +23,9 @@ def validate_html(html):
             symbol = "</"
             top = s.pop()
             topsym = top[0]
-            if not ( matches(topsym, symbol) and top[1:]==currtag[2:] ):
-                balanced = False        
+            if  matches(topsym, symbol) and (top[1:]==currtag[2:] ):
+                balanced = True
+            else: balanced = False
 
     if balanced and s==[]:
         return True
