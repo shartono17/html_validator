@@ -16,11 +16,11 @@ def validate_html(html):
     balanced = True
     for i in range(len(tag_list)):
         currtag = tag_list[i]
-        if currtag[1] != "/":
+        if currtag[1] != '/':
             # symbol = "<"
             s.append(currtag)
-        elif currtag[1] == "/":
-            symbol = "</"
+        elif currtag[1] == '/':
+            symbol = '</'
             top = s.pop()
             topsym = top[0]
             if  matches(topsym, symbol) and (top[1:]==currtag[2:] ):
@@ -34,8 +34,8 @@ def validate_html(html):
     
 
 def _matches(left, right):
-    openbrack = "<"
-    closebrack = "</"
+    openbrack = '<'
+    closebrack = '</'
     return openbrack.index(left) == closebrack.index(right)
 
 
