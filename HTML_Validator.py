@@ -64,6 +64,7 @@ def _extract_tags(html):
     i = 0
     while i < len(html):
         temp = ''
+        end_tag = ">"
         currsym = html[i]
         if currsym == "<":
             while currsym != ">":
@@ -73,3 +74,9 @@ def _extract_tags(html):
             temp += ">"
             parsed_tags.append(temp)
     return parsed_tags
+
+# def _extract_tags(html):
+#     parsed_tags = []
+#    if len(html) <
+#    i = 0
+#     while i<len(html)
