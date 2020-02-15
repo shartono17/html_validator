@@ -66,6 +66,6 @@ def _extract_tags(html):
                 temp += currsym
                 i += 1
                 currsym = html[i]
-                temp += ">"
-                parsed_tags.append(temp)
+            temp += ">"
+            parsed_tags.append(temp)
     return parsed_tags
