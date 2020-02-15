@@ -11,7 +11,7 @@ def validate_html(html):
     False
     '''
     tag_list = _extract_tags(html)
-    if tag_list == '':
+    if tag_list == []:
         return False
     else: 
         s = []
@@ -81,7 +81,7 @@ def _extract_tags(html):
                 parsed_tags.append(temp)
         return parsed_tags
 
-        else: return []
+    else: return []
 
 # def _extract_tags(html):
 #     parsed_tags = []
