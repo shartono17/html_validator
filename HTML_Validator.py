@@ -23,7 +23,7 @@ def validate_html(html):
             symbol = '</'
             top = s.pop()
             topsym = top[0]
-            if  matches(topsym, symbol) and (top[1:]==currtag[2:] ):
+            if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
                 balanced = True
             else: balanced = False
 
@@ -32,6 +32,7 @@ def validate_html(html):
     else: return False
 
     
+
 
 def _matches(left, right):
     openbrack = '<'
