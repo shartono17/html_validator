@@ -59,9 +59,13 @@ def _extract_tags(html):
     '''
     parsed_tags = []
     for i in range(len(html)):
-        tag_end = i
-        if html[i] == "<":
-            tag_end = html.find(">")
-            parsed_tags += [html[i:tag_end+1]]
-        i = tag_end +1
+        temp = ''
+        currsym = html[i]
+        if currsym == "<":
+            while currsym != ">":
+                temp += currsym
+                i += 1
+                currsym = html[i]
+                temp += ">"
+                parsed_tags.append(temp)
     return parsed_tags
