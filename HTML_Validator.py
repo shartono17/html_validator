@@ -10,6 +10,8 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
+    if html == '':
+        return False
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
@@ -68,8 +70,6 @@ def _extract_tags(html):
     else: 
 
         parsed_tags = []
-#    i = 0
-#    while i < len(html):
         for i in range(len(html)):
             temp = ''
             end_tag = ">"
