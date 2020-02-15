@@ -58,7 +58,7 @@ def _extract_tags(html):
     ['<strong>',
     '''
     parsed_tags = []
-    while i != len(html):
+    for i in range(len(html)):
         tag_end = i
         if html[i] == "<":
             tag_end = html.find(">")
