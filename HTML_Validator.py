@@ -81,7 +81,7 @@ def _extract_tags(html):
                 parsed_tags.append(temp)
         return parsed_tags
 
-    else: return ''
+        else: return []
 
 # def _extract_tags(html):
 #     parsed_tags = []
