@@ -17,15 +17,17 @@ def validate_html(html):
     for i in range(len(tag_list)):
         currtag = tag_list[i]
         if currtag[1] != '/':
-            # symbol = "<"
             s.append(currtag)
         elif currtag[1] == '/':
             symbol = '</'
-            top = s.pop()
-            topsym = top[0]
-            if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
-                balanced = True
-            else: balanced = False
+            if s == []:
+                return False
+            else: 
+                top = s.pop()
+                topsym = top[0]
+                if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
+                    balanced = True
+                else: balanced = False
 
     if balanced and s==[]:
         return True
