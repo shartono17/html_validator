@@ -10,7 +10,7 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
-    tag_list = html._extract_tags()
+    tag_list = _extract_tags(html)
     s = []
     symbol = ''
     balanced = True
