@@ -11,27 +11,30 @@ def validate_html(html):
     False
     '''
     tag_list = _extract_tags(html)
-    s = []
-    symbol = ''
-    balanced = True
-    for i in range(len(tag_list)):
-        currtag = tag_list[i]
-        if currtag[1] != '/':
-            s.append(currtag)
-        elif currtag[1] == '/':
-            symbol = '</'
-            if s == []:
-                return False
-            else: 
-                top = s.pop()
-                topsym = top[0]
-                if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
-                    balanced = True
-                else: balanced = False
+    if tag_list == '':
+        return False
+    else: 
+        s = []
+        symbol = ''
+        balanced = True
+        for i in range(len(tag_list)):
+            currtag = tag_list[i]
+            if currtag[1] != '/':
+                s.append(currtag)
+            elif currtag[1] == '/':
+                symbol = '</'
+                if s == []:
+                    return False
+                else: 
+                    top = s.pop()
+                    topsym = top[0]
+                    if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
+                        balanced = True
+                    else: balanced = False
 
-    if balanced and s==[]:
-        return True
-    else: return False
+        if balanced and s==[]:
+            return True
+        else: return False
 
     
 
@@ -60,21 +63,25 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>',
     '''
-    parsed_tags = []
+    if "<" and "</" and ">" in html:
+
+        parsed_tags = []
 #    i = 0
 #    while i < len(html):
-    for i in range(len(html)):
-        temp = ''
-        end_tag = ">"
-        currsym = html[i]
-        if currsym == "<":
-            while currsym != ">":
-                temp += currsym
-                i += 1
-                currsym = html[i]
-            temp += ">"
-            parsed_tags.append(temp)
-    return parsed_tags
+        for i in range(len(html)):
+            temp = ''
+            end_tag = ">"
+            currsym = html[i]
+            if currsym == "<":
+                while currsym != ">":
+                    temp += currsym
+                    i += 1
+                    currsym = html[i]
+                temp += ">"
+                parsed_tags.append(temp)
+        return parsed_tags
+
+    else: return ''
 
 # def _extract_tags(html):
 #     parsed_tags = []
