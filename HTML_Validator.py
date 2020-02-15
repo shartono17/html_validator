@@ -1,4 +1,4 @@
-#!/bin/python3
+
 
 
 def validate_html(html):
@@ -57,5 +57,11 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>',
     '''
-
-
+    parsed_tags = []
+    for i in range(len(html)):
+        tag_end = i
+        if html[i] == "<":
+            tag_end = html.find(">")
+            parsed_tags += [html[i:tag_end+1]]
+        i = tag_end +1
+    return parsed_tags
