@@ -61,8 +61,9 @@ def _extract_tags(html):
     ['<strong>',
     '''
     parsed_tags = []
-    i = 0
-    while i < len(html):
+#    i = 0
+#    while i < len(html):
+    for i in range(len(html)):
         temp = ''
         end_tag = ">"
         currsym = html[i]
