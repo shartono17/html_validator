@@ -10,12 +10,10 @@ def validate_html(html):
     >>> validate_html('<strong>example')
     False
     '''
-#    if html == '':
-#        return False
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
-#    else: 
+ 
     s = []
     symbol = ''
     balanced = True
@@ -65,26 +63,20 @@ def _extract_tags(html):
     ['<strong>',
     '''
     if "<" and "</" and ">" in html:
-        try:
-
-            parsed_tags = []
-            for i in range(len(html)):
-                temp = ''
-                end_tag = ">"
+    parsed_tags = []
+    for i in range(len(html)):
+        temp = ''
+        end_tag = ">"
+        currsym = html[i]
+        if currsym == "<":
+            while currsym != ">":
+                temp += currsym
+                i += 1
                 currsym = html[i]
-                if currsym == "<":
-                    while currsym != ">":
-                        temp += currsym
-                        i += 1
-                        currsym = html[i]
-                    temp += ">"
-                    parsed_tags.append(temp)
-            return parsed_tags
+            temp += ">"
+            parsed_tags.append(temp)
+    else:
+        return []
+    return parsed_tags
 
-        except ValueError:
-            print("ValueError, oops.")
-# def _extract_tags(html):
-#     parsed_tags = []
-#    if len(html) <
-#    i = 0
-#     while i<len(html)
+
