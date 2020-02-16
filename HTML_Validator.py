@@ -63,7 +63,7 @@ def _extract_tags(html):
     ['<strong>',
     '''
     if "<" and "</" and ">" in html:
-
+        parsed_tags = []
         for i in range(len(html)):
             temp = ''
             end_tag = ">"
