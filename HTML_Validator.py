@@ -65,21 +65,18 @@ def _extract_tags(html):
     if html.count("<") != html.count(">"):
         raise ValueError("found < without matching >")
     elif "<" and "</" and ">" in html:
-        parsed_tags = []
-        for i in range(len(html)):
-            temp = ''
-            end_tag = ">"
-            currsym = html[i]
-            if currsym == "<":
-                while currsym != ">":
-                    temp += currsym
-                    i += 1
-                    currsym = html[i]
-                temp += ">"
-                parsed_tags.append(temp)
-        return parsed_tags
-
-    else:
-        return []
+    parsed_tags = []
+    for i in range(len(html)):
+        temp = ''
+        end_tag = ">"
+        currsym = html[i]
+        if currsym == "<":
+            while currsym != ">":
+                temp += currsym
+                i += 1
+                currsym = html[i]
+            temp += ">"
+            parsed_tags.append(temp)
+    return parsed_tags
 
 
