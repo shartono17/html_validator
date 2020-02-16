@@ -11,7 +11,7 @@ def validate_html(html):
     False
     '''
     if html == '':
-        return False
+        return True
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
@@ -36,9 +36,8 @@ def validate_html(html):
         if balanced and s==[]:
             return True
         else: return False
-        
         except ValueError:
-            print ("Oops, ValueError occured.")
+            print("Not a valid HTML string!")
     
 
 
