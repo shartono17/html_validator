@@ -35,10 +35,7 @@ def validate_html(html):
 
         if balanced and s==[]:
             return True
-        else: return False
-        except ValueError:
-            print("Not a valid HTML string!")
-    
+        else: return False    
 
 
 def _matches(left, right):
@@ -65,23 +62,22 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>',
     '''
-    if "<" and "</" and ">" in html:
-        try: parsed_tags = []
-            for i in range(len(html)):
-                temp = ''
-                end_tag = ">"
-                currsym = html[i]
-                if currsym == "<":
-                    while currsym != ">":
-                        temp += currsym
-                        i += 1
-                        currsym = html[i]
-                    temp += ">"
-                    parsed_tags.append(temp)
-            return parsed_tags
-
-        except ValueError:
-            print ("Oops, ValueError occured.")
+    if html.count("<") != html.count(">"):
+        raise valueError("This html string does not have complete parantheses!")
+    elif "<" and "</" and ">" in html:
+        parsed_tags = []
+        for i in range(len(html)):
+            temp = ''
+            end_tag = ">"
+            currsym = html[i]
+            if currsym == "<":
+                while currsym != ">":
+                    temp += currsym
+                    i += 1
+                    currsym = html[i]
+                temp += ">"
+                parsed_tags.append(temp)
+        return parsed_tags
 
     else:
         return []
