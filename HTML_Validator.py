@@ -13,27 +13,27 @@ def validate_html(html):
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
- 
-    s = []
-    symbol = ''
-    balanced = True
-    for i in range(len(tag_list)):
-        currtag = tag_list[i]
-        if currtag[1] != '/':
-            s.append(currtag)
-        elif currtag[1] == '/':
-            symbol = '</'
-            if s == []:
-                return False
-            else: 
-                top = s.pop()
-                topsym = top[0]
-                if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):                        balanced = True
-                else: balanced = False
+    else:  
+        s = []
+        symbol = ''
+        balanced = True
+        for i in range(len(tag_list)):
+            currtag = tag_list[i]
+            if currtag[1] != '/':
+                s.append(currtag)
+            elif currtag[1] == '/':
+                symbol = '</'
+                if s == []:
+                    return False
+                else: 
+                    top = s.pop()
+                    topsym = top[0]
+                    if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):                        balanced = True
+                    else: balanced = False
 
-    if balanced and s==[]:
-        return True
-    else: return False
+        if balanced and s==[]:
+            return True
+        else: return False
 
     
 
