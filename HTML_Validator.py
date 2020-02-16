@@ -36,7 +36,9 @@ def validate_html(html):
         if balanced and s==[]:
             return True
         else: return False
-
+        
+        except ValueError:
+            print ("Oops, ValueError occured.")
     
 
 
@@ -78,6 +80,9 @@ def _extract_tags(html):
                 temp += ">"
                 parsed_tags.append(temp)
         return parsed_tags
+
+        except ValueError:
+            print ("Oops, ValueError occured.")
 
     else:
         return []
