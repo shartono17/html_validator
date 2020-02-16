@@ -12,6 +12,8 @@ def validate_html(html):
     '''
     if html == '':
         return True
+    if html.count("<") != html.count(">"):
+        return False
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
@@ -30,7 +32,8 @@ def validate_html(html):
                 else: 
                     top = s.pop()
                     topsym = top[0]
-                    if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):                        balanced = True
+                    if  _matches(topsym, symbol) and (top[1:]==currtag[2:] ):
+                        balanced = True
                     else: balanced = False
 
         if balanced and s==[]:
@@ -62,21 +65,24 @@ def _extract_tags(html):
     >>> _extract_tags('Python <strong>rocks</strong>!')
     ['<strong>',
     '''
+    parsed_tags = []
+    
     if html.count("<") != html.count(">"):
         raise ValueError("found < without matching >")
-
-    parsed_tags = []
-    for i in range(len(html)):
-        temp = ''
-        end_tag = ">"
-        currsym = html[i]
-        if currsym == "<":
-            while currsym != ">":
-                temp += currsym
-                i += 1
-                currsym = html[i]
-            temp += ">"
-            parsed_tags.append(temp)
+    
+    if "<" and "</" and ">":
+        parsed_tags = []
+        for i in range(len(html)):
+            temp = ''
+            end_tag = ">"
+            currsym = html[i]
+            if currsym == "<":
+                while currsym != ">":
+                    temp += currsym
+                    i += 1
+                    currsym = html[i]
+                temp += ">"
+                parsed_tags.append(temp)
     return parsed_tags
 
 
