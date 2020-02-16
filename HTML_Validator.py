@@ -15,7 +15,7 @@ def validate_html(html):
     tag_list = _extract_tags(html)
     if tag_list == []:
         return False
-    else try:  
+    else:  
         s = []
         symbol = ''
         balanced = True
