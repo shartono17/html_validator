@@ -63,7 +63,7 @@ def _extract_tags(html):
     ['<strong>',
     '''
     if html.count("<") != html.count(">"):
-        raise ValueError("This html string does not have complete parantheses!")
+        raise ValueError("found < without matching >")
     elif "<" and "</" and ">" in html:
         parsed_tags = []
         for i in range(len(html)):
